@@ -4,6 +4,7 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
+    <view class="m-1">1111</view>
   </view>
 </template>
 
