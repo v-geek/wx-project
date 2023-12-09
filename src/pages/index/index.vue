@@ -4,7 +4,14 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
-    <view class="m-1">1111</view>
+    <view class="m-1">
+      <text>111</text>
+      <view class="i-ep-help"></view>
+    </view>
+
+    <view class="flex-c">222</view>
+
+    <div class="font-(light mono)">333</div>
   </view>
 </template>
 

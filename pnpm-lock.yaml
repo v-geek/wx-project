@@ -67,6 +67,15 @@ devDependencies:
   '@dcloudio/vite-plugin-uni':
     specifier: 3.0.0-3081220230817001
     version: 3.0.0-3081220230817001(postcss@8.4.32)(vite@4.1.4)(vue@3.2.47)
+  '@iconify-json/ep':
+    specifier: ^1.1.13
+    version: 1.1.13
+  '@unocss/preset-rem-to-px':
+    specifier: ^0.58.0
+    version: 0.58.0
+  '@unocss/transformer-variant-group':
+    specifier: ^0.58.0
+    version: 0.58.0
   '@vue/runtime-core':
     specifier: ^3.2.45
     version: 3.3.11
@@ -2203,6 +2212,12 @@ packages:
     requiresBuild: true
     optional: true
 
+  /@iconify-json/ep@1.1.13:
+    resolution: {integrity: sha512-hqcXryovQlghDi7G6LzzWKWcyxAIIrK4M8Wrs+pvthIBoRcKd3fHXL1PaNV2kuQWOR4Tnko5iqAFapHc9ByuSA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
@@ -3174,6 +3189,12 @@ packages:
       '@unocss/core': 0.58.0
       '@unocss/extractor-arbitrary-variants': 0.58.0
       '@unocss/rule-utils': 0.58.0
+    dev: true
+
+  /@unocss/preset-rem-to-px@0.58.0:
+    resolution: {integrity: sha512-YW1MOw5ZkeE6TBPlbnIm4kKPBKWKU8ML7cqfrn+IqRmS//fquUl4RLj53fECainZpUOKg9uMvrBlLncc3YLHFw==}
+    dependencies:
+      '@unocss/core': 0.58.0
     dev: true
 
   /@unocss/preset-tagify@0.58.0:
