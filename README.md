@@ -4,7 +4,12 @@
 
 安装依赖时不要使用 cnpm, unocss 的包有问题, 请使用 npm | pnpm
 
-免费接口测试地址: https://jsonplaceholder.typicode.com/guide/
+- 免费接口测试地址:
+
+```
+https://jsonplaceholder.typicode.com/guide/
+https://juejin.cn/post/7041461420818432030#heading-0
+```
 
 #### todo-list
 
