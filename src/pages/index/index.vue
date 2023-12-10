@@ -1,22 +1,22 @@
 <template>
   <view class="content">
     <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
+
     <view class="m-1">
       <text>111</text>
       <view class="i-ep-help"></view>
     </view>
 
     <view class="flex-c">222</view>
-
-    <div class="font-(light mono)">333</div>
   </view>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import useUserStore from '@/store/modules/user'
+
+console.log('xxxxx', useUserStore().userInfo)
+
 const title = ref('Hello')
 </script>
 
@@ -35,15 +35,5 @@ const title = ref('Hello')
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
 }
 </style>
