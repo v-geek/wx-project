@@ -4,6 +4,8 @@
 
 安装依赖时不要使用 cnpm, unocss 的包有问题, 请使用 npm | pnpm
 
+免费接口测试地址: https://jsonplaceholder.typicode.com/guide/
+
 #### todo-list
 
 - [x] unocss
