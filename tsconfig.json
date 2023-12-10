@@ -6,7 +6,10 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
+      ],
+      "~@": [
+        "src/static/*"
+      ],
     },
     "lib": [
       "esnext",
@@ -14,6 +17,7 @@
     ],
     "types": [
       "@dcloudio/types",
+      "@types/uni-app",
       "@types/node",
     ],
     "ignoreDeprecations": "5.0",

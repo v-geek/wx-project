@@ -9,3 +9,10 @@ export interface HttpRes<T = any> {
   msg: string
   data: T
 }
+
+export interface ITest1Res {
+  id: number
+  userId: number
+  title: string
+  body: string
+}

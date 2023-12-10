@@ -6,9 +6,9 @@
 
 #### todo-list
 
-- [ ] unocss
-- [ ] 注入 pinia
-- [ ] http 封装
+- [x] unocss
+- [x] 注入 pinia
+- [x] http 封装
 - [ ] 分包加载
 - [ ] 提交代码时效验
 - [ ] 集成微信支付 等功能

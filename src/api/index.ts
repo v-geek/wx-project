@@ -1,16 +1,25 @@
 import { hideLoading, showLoading } from '@/config/loading'
 import type { HttpRes, requestOptions } from './types'
-import config from '@/config'
+import config from '@/config/env'
 import { logout, showToast } from '@/utils'
+import { isObject } from '@/utils/is'
 
-const request = (options: requestOptions): Promise<any> => {
+const request = <T = HttpRes>(options: requestOptions): Promise<T> => {
   return new Promise((resolve, reject) => {
-    const { loading, url, baseUrl = config.baseUrl, method, data, withoutToken, header } = options
+    const {
+      loading,
+      url,
+      baseUrl = config.baseUrl,
+      method,
+      data,
+      withoutToken,
+      header
+    } = options
 
     loading && showLoading(loading)
 
     uni.request({
-      url: baseUrl + url,
+      url: url.includes('http') ? url : baseUrl + url,
       method,
       header: withoutToken
         ? header
@@ -20,9 +29,11 @@ const request = (options: requestOptions): Promise<any> => {
           },
       data,
       success: (res: UniApp.RequestSuccessCallbackResult) => {
-        let { data, statusCode, header } = res
-
-        data = data as HttpRes
+        const { statusCode, header, data } = res as unknown as {
+          statusCode: number
+          header: any
+          data: T
+        }
 
         if (header?.authorization) {
           const token = header.authorization.substr(7)
@@ -31,15 +42,16 @@ const request = (options: requestOptions): Promise<any> => {
 
         hideLoading()
 
-        if (statusCode !== 200) {
+        // eg: 404, 500
+        if (statusCode < 200 || statusCode >= 400) {
           showToast('服务器开小差了')
-          reject(data)
+          reject(res)
         }
 
-        if (!String(data.code).includes('200')) {
+        if (isObject(data) && data.code && !String(data.code).includes('200')) {
           showToast(data.msg)
           // token过期, 直接退出登录
-          if (data.code == 401) logout()
+          data.code == 401 && logout()
           reject(data)
         }
 
