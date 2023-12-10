@@ -13,3 +13,17 @@
 - [ ] 提交代码时效验
 - [ ] 集成微信支付 等功能
 - [ ] 开发功能
+
+##### H5 的环境变量使用示例
+
+```
+let api = ''
+
+// #ifdef H5
+if (import.meta.env.NODE_ENV === 'development') {
+  api = '/dev-api'
+} else {
+  api = import.meta.env.VITE_BASE_URL
+}
+// #endif
+```

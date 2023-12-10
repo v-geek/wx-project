@@ -1,6 +1,7 @@
 export interface requestOptions extends UniApp.RequestOptions {
   baseUrl?: string
   loading?: boolean
+  withoutToken?: boolean
 }
 
 export interface HttpRes<T = any> {

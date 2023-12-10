@@ -13,7 +13,8 @@
       "dom"
     ],
     "types": [
-      "@dcloudio/types"
+      "@dcloudio/types",
+      "@types/node",
     ],
     "ignoreDeprecations": "5.0",
   },
@@ -22,5 +23,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue"
-  ]
+  ],
+  "exclude": [
+    "node_modules"
+  ],
 }

@@ -5,19 +5,19 @@ import { logout, showToast } from '@/utils'
 
 const request = (options: requestOptions): Promise<any> => {
   return new Promise((resolve, reject) => {
-    const { loading, url, baseUrl = config.baseUrl, method, data } = options
+    const { loading, url, baseUrl = config.baseUrl, method, data, withoutToken, header } = options
 
     loading && showLoading(loading)
-
-    options.url = url.includes('http') ? url : baseUrl + url
 
     uni.request({
       url: baseUrl + url,
       method,
-      header: {
-        // 'content-type': method === 'GET' ? 'application/json; charset=utf-8' : 'application/x-www-form-urlencoded'
-        'Authorization-Token-Code': uni.getStorageSync('token')
-      },
+      header: withoutToken
+        ? header
+        : {
+            'Authorization-Token-Code': uni.getStorageSync('token'),
+            ...header
+          },
       data,
       success: (res: UniApp.RequestSuccessCallbackResult) => {
         let { data, statusCode, header } = res
