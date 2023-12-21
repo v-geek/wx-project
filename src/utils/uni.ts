@@ -80,3 +80,25 @@ export const saveImg = (url: string) => {
   })
   // #endif
 }
+
+/**
+ * 以同步的形式调用uniapp的方法
+ */
+export const uniapp = <T = any, P = any>(
+  key: keyof UniApp.Uni,
+  options: UniApp.Uni[keyof UniApp.Uni] | {} = {}
+): Promise<T | P> =>
+  new Promise((resolve, reject) => {
+    const defaultOptions = {
+      success: (res: T) => {
+        resolve(res)
+      },
+      fail: (err: P) => {
+        reject(err)
+      }
+    }
+
+    const uniFn = uni[key] as Function
+
+    uniFn({ ...defaultOptions, ...options })
+  })
