@@ -5,12 +5,103 @@
       "style": {
         "navigationBarTitleText": "uni-app"
       }
+    },
+    {
+      "path": "pages/index/cart",
+      "style": {
+        "navigationBarTitleText": "购物车"
+      },
+      "meta": {
+        "sync": true,
+        "title": "购物车",
+        "group": "商城"
+      }
+    },
+    {
+      "path": "pages/index/user",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "enablePullDownRefresh": true
+      },
+      "meta": {
+        "sync": true,
+        "title": "个人中心",
+        "group": "商城"
+      }
     }
   ],
+  "subPackages": [
+    {
+      "root": "pages/goods",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "商品详情"
+          },
+          "meta": {
+            "sync": true,
+            "title": "普通商品",
+            "group": "商品"
+          }
+        },
+        {
+          "path": "groupon",
+          "style": {
+            "navigationBarTitleText": "拼团商品"
+          },
+          "meta": {
+            "sync": true,
+            "title": "拼团商品",
+            "group": "商品"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/order",
+      "pages": [
+        {
+          "path": "detail",
+          "style": {
+            "navigationBarTitleText": "订单详情"
+          },
+          "meta": {
+            "auth": true,
+            "title": "订单详情"
+          }
+        },
+        {
+          "path": "confirm",
+          "style": {
+            "navigationBarTitleText": "确认订单"
+          },
+          "meta": {
+            "auth": true,
+            "title": "确认订单"
+          }
+        }
+      ]
+    }
+  ],
+  // 全局样式设置
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
+    "navigationBarTitleText": "mall商城",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/index/cart"
+      },
+      {
+        "pagePath": "pages/index/user"
+      }
+    ]
   }
 }

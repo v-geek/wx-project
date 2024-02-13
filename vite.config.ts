@@ -21,8 +21,8 @@ export default defineConfig(({ mode }) => {
       uni(),
       UnoCSS(),
       uniReadPages({
-        pagesJsonDir: path.resolve(__dirname, './pages.json'),
-        includes: ['path', 'aliasPath', 'name', 'meta']
+        pagesJsonDir: path.resolve(__dirname, './src/pages.json'),
+        includes: ['path', 'aliasPath', 'meta']
       })
     ],
     envPrefix: ['VITE_', 'NODE_ENV'],

@@ -1,4 +1,4 @@
-import request from '..'
+import request from '../index'
 import type { ITest1Res } from '../types'
 
 export const testGet1 = () =>
