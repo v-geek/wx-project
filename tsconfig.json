@@ -21,7 +21,8 @@
     "ignoreDeprecations": "5.0",
     "strictPropertyInitialization": false,
     // 可以在 ts 中引入js文件 & 不报错
-    "allowJs": true, // 指定是否允许编译JS文件，默认false, 即不编译JS文件
+    "allowJs": true,
+    "outDir": "dist",
   },
   // 指定要编译的路径列表
   "include": [
@@ -36,6 +37,6 @@
   // 指定编译器 要排除的、不编译的文件
   "exclude": [
     "node_modules",
-    "dist",
+    "dist"
   ],
 }
