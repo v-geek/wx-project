@@ -2,13 +2,11 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
+    // import的时候 找不到模块 @/xxx 或其相应的类型声明
     "paths": {
       "@/*": [
-        "./src/*"
-      ],
-      "~@": [
-        "src/static/*"
+        "src/*"
       ],
     },
     "lib": [
@@ -22,13 +20,19 @@
     ],
     "ignoreDeprecations": "5.0",
   },
+  // 指定要编译的路径列表
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "vite.config.ts"
   ],
+  // 指定编译器 要排除的、不编译的文件
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
   ],
 }

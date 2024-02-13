@@ -2,6 +2,8 @@ import { defineConfig, loadEnv } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import UnoCSS from 'unocss/vite'
 import path, { resolve } from 'path'
+// @ts-ignore
+import uniReadPages from './src/router/utils/uniReadPages'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -12,11 +14,17 @@ export default defineConfig(({ mode }) => {
     base: env.NODE_ENV === 'development' ? '/' : './',
     resolve: {
       alias: {
-        '@': resolve(__dirname, 'src'),
-        '~@': path.resolve(__dirname, 'src/static')
+        '@': resolve(__dirname, 'src')
       }
     },
-    plugins: [uni(), UnoCSS()],
+    plugins: [
+      uni(),
+      UnoCSS(),
+      uniReadPages({
+        pagesJsonDir: path.resolve(__dirname, './pages.json'),
+        includes: ['path', 'aliasPath', 'name', 'meta']
+      })
+    ],
     envPrefix: ['VITE_', 'NODE_ENV'],
     server: {
       open: true,
