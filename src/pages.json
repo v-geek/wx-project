@@ -32,6 +32,17 @@
   ],
   "subPackages": [
     {
+      "root": "pages/public",
+      "pages": [
+        {
+          "path": "webview",
+          "style": {
+            "navigationBarTitleText": ""
+          }
+        }
+      ]
+    },
+    {
       "root": "pages/goods",
       "pages": [
         {

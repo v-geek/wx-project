@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { isArray } from '../../utils/is'
 import stripJsonComments from './strip-json-comments.js'
-import type { IParams, IRoute } from '../types'
+import type { IParams } from '../types'
 
 class transformPages {
   // 需要提取的字段

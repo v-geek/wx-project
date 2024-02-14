@@ -26,3 +26,29 @@ export function deepClone<T = any>(obj: T) {
 
   return cloneObj as T
 }
+
+export function throttle<T = any>(fn: Function, delay: number = 500) {
+  let timer: NodeJS.Timeout | null = null
+  let preTime = 0
+
+  // 将this放在函数参数列表上声明类型即可, 使用的时候this不会干扰形参传入顺序
+  return function (...args: T[]) {
+    if (timer) clearTimeout(timer)
+
+    const nowTime = Date.now()
+    // 还有多少时间到下一次触发点, 保证最后一次函数会执行
+    const remaining = delay - (nowTime - preTime)
+    const context = this
+
+    // 确保第一次函数会执行
+    if (remaining <= 0) {
+      fn.apply(context, args)
+      preTime = Date.now()
+    } else {
+      // 确保最后一次函数会执行
+      timer = setTimeout(() => {
+        fn.apply(context, args)
+      }, remaining)
+    }
+  }
+}

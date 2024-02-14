@@ -1,10 +1,9 @@
 <template>
   <view>
-    <!-- <button open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
-      <image class="avatar" :src="avatarUrl"></image>
-    </button>
-    <input type="nickname" placeholder="请输入昵称" v-model="nickName" /> -->
-    777
+    <view>111</view>
+    <view>222</view>
+    <view>333</view>
+    <view>xxx</view>
   </view>
 </template>
 
@@ -14,16 +13,20 @@ import { onLoad } from '@dcloudio/uni-app'
 import useUserStore from '@/store/modules/user'
 import { testGet1, testPost1 } from '@/api/modules/test'
 // import { uniapp } from '@/utils/uni'
+import router from '@/router'
+import useModalStore from '@/store/modules/modal'
 
-console.log('测试store中的数据', useUserStore().userInfo)
+const userStore = useUserStore()
+const modalStore = useModalStore()
 
-// console.log(ROUTES)
-// console.log(ROUTES_MAP)
-// console.log(TABBAR)
+userStore.setUseId('ppooo')
+modalStore.setAuth('modal-auth')
 
-onLoad(() => {
-  getData()
-})
+// console.log('测试store中的数据', userStore)
+
+// onLoad(() => {
+//   getData()
+// })
 
 async function getData() {
   try {
@@ -35,17 +38,6 @@ async function getData() {
     console.log('请求失败', err)
   }
 }
-
-// const nickName = ref('')
-
-// const avatarUrl = ref(
-//   'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-// )
-
-// const onChooseAvatar = (event: any) => {
-//   console.log('event', event)
-//   avatarUrl.value = event?.detail?.avatarUrl
-// }
 </script>
 
 <style></style>
