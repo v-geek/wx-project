@@ -1,7 +1,18 @@
 <template>
-  <div>GoodsIndex</div>
+  <view>
+    <canvas-poster ref="sharePosterRef" />
+  </view>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { onMounted, reactive, ref, unref } from 'vue'
+import canvasPoster from '@/components/shareModal/index.vue'
 
-<style lang="scss" scoped></style>
+const sharePosterRef = ref()
+
+onMounted(() => {
+  unref(sharePosterRef).getPoster()
+})
+</script>
+
+<style scoped></style>

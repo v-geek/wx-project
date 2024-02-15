@@ -1,9 +1,9 @@
 <template>
   <view>
-    <view>111</view>
-    <view>222</view>
-    <view>333</view>
-    <view>xxx</view>
+    <view class="w-">111</view>
+    <view class="w-">222</view>
+    <view class="w-">333</view>
+    <view class="w-">xxx</view>
   </view>
 </template>
 
@@ -27,6 +27,8 @@ modalStore.setAuth('modal-auth')
 // onLoad(() => {
 //   getData()
 // })
+
+router.go('/pages/goods/index')
 
 async function getData() {
   try {

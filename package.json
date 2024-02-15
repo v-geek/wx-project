@@ -55,6 +55,7 @@
     "@dcloudio/uni-quickapp-webview": "3.0.0-3090920231225001",
     "pinia": "2.0.33",
     "pinia-plugin-persist-uni": "^1.3.1",
+    "qs-canvas": "^1.0.11",
     "vue": "^3.2.47",
     "vue-i18n": "^9.8.0"
   },

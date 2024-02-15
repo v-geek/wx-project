@@ -5,7 +5,8 @@ const useUserStore = defineStore({
   state: () => ({
     token: 'token',
     user_id: '1112',
-    isLogin: !!uni.getStorageSync('token')
+    isLogin: !!uni.getStorageSync('token'),
+    nickname: '张三'
   }),
   getters: {
     // token: state => {

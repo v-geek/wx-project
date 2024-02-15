@@ -53,6 +53,9 @@ dependencies:
   pinia-plugin-persist-uni:
     specifier: ^1.3.1
     version: 1.3.1(pinia@2.0.33)(vue@3.2.47)
+  qs-canvas:
+    specifier: ^1.0.11
+    version: 1.0.11
   vue:
     specifier: ^3.2.47
     version: 3.2.47
@@ -6205,6 +6208,10 @@ packages:
   /qrcode-terminal@0.12.0:
     resolution: {integrity: sha512-EXtzRZmC+YGmGlDFbXKxQiMZNwCLEO6BANKXG4iCtSIM0yqc/pappSx3RIKr4r0uh5JsBckOXeKrB3Iz7mdQpQ==}
     hasBin: true
+
+  /qs-canvas@1.0.11:
+    resolution: {integrity: sha512-WJwLwrAA1++ZqT6eR2F4Qa42yowybDUtQ2TDPtDOwhD1i4DzEOotug5N20cDkHat9l69ThOWoxV4qJbLKAjkNg==}
+    dev: false
 
   /qs@6.11.0:
     resolution: {integrity: sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==}
