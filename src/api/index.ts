@@ -5,26 +5,34 @@ import { isObject } from '@/utils/is'
 import useUserStore from '@/store/modules/user'
 
 const userStore = useUserStore()
+const keyList = ['loading', 'url', 'baseUrl', 'auth', 'header', 'showError']
 
 const request = <T = HttpRes>(options: requestOptions): Promise<T> => {
-  const { loading, url, baseUrl = config.baseUrl, auth = true, header } = options
+  const { loading, url, baseUrl = config.baseUrl, auth = true, header = {}, showError } = options
 
   const reqOptions = {
     url: url.includes('http') ? url : baseUrl + url,
-    timeout: 12000
+    method: 'GET',
+    timeout: 12000,
+    // #ifdef H5
+    // 跨域请求时是否携带凭证(Cookies) 仅H5支持
+    withCredentials: false,
+    // #endif
+    header: {
+      Accept: 'text/json',
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
   } as requestOptions
 
   if (header || auth) {
-    reqOptions.header = auth
-      ? {
-          'Authorization-Token-Code': uni.getStorageSync('token'),
-          ...header
-        }
-      : header
+    Object.assign(
+      reqOptions.header,
+      auth ? { 'Authorization-Token-Code': uni.getStorageSync('token'), ...header } : header
+    )
   }
 
   Object.keys(options).forEach(key => {
-    if (!['loading', 'url', 'baseUrl', 'auth', 'header'].includes(key)) {
+    if (!keyList.includes(key)) {
       // @ts-ignore
       reqOptions[key] = options[key]
     }
@@ -44,19 +52,18 @@ const request = <T = HttpRes>(options: requestOptions): Promise<T> => {
 
         if (header?.authorization) {
           const token = header.authorization.substr(7)
-          uni.setStorageSync('token', token)
+          userStore.setToken(token)
         }
 
         hideLoading()
 
-        // eg: 404, 500
         if (statusCode < 200 || statusCode >= 400) {
           handleError(statusCode)
           reject(res)
         }
 
         if (isObject(data) && data.code == 401) {
-          showToast(options.showError ? data.msg : get401Msg())
+          showToast(showError ? data.msg : get401Msg())
           userStore.logout()
           reject(res)
         }
@@ -67,7 +74,9 @@ const request = <T = HttpRes>(options: requestOptions): Promise<T> => {
         console.log('err', err)
 
         let errMsg = '网络不给力，请检查你的网络设置~'
+
         if (err.errMsg.includes('timeout')) errMsg = '请求超时'
+
         // #ifdef H5
         if (err.errMsg.includes('Network')) {
           errMsg = window.navigator.onLine ? '服务器异常' : '请检查您的网络连接'

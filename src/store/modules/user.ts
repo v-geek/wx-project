@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 const useUserStore = defineStore({
   id: 'user',
   state: () => ({
-    token: 'token',
+    token: 'token-xxxxxxxx',
     userId: '1112',
     isLogin: !!uni.getStorageSync('token'),
     nickname: '张三'
@@ -17,6 +17,9 @@ const useUserStore = defineStore({
     // }
   },
   actions: {
+    setToken(token: string) {
+      this.token = token
+    },
     setUseId(id: string) {
       this.userId = id
     },
