@@ -4,7 +4,7 @@ const useUserStore = defineStore({
   id: 'user',
   state: () => ({
     token: 'token',
-    user_id: '1112',
+    userId: '1112',
     isLogin: !!uni.getStorageSync('token'),
     nickname: '张三'
   }),
@@ -13,12 +13,24 @@ const useUserStore = defineStore({
     //   return state.userInfo.token
     // },
     // userId: state => {
-    //   return state.userInfo.user_id
+    //   return state.userInfo.userId
     // }
   },
   actions: {
     setUseId(id: string) {
-      this.user_id = id
+      this.userId = id
+    },
+    logout() {
+      uni.removeStorageSync('token')
+
+      uni.reLaunch({
+        url: '/pages/login/index',
+        complete: () => {
+          // #ifdef APP-PLUS
+          plus.navigator.closeSplashscreen()
+          // #endif
+        }
+      })
     }
   },
   persist: {

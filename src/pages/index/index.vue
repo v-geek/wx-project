@@ -12,23 +12,20 @@ import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import useUserStore from '@/store/modules/user'
 import { testGet1, testPost1 } from '@/api/modules/test'
-// import { uniapp } from '@/utils/uni'
 import router from '@/router'
 import useModalStore from '@/store/modules/modal'
 
 const userStore = useUserStore()
 const modalStore = useModalStore()
 
-userStore.setUseId('ppooo')
+userStore.setUseId('855555')
 modalStore.setAuth('modal-auth')
 
-// console.log('测试store中的数据', userStore)
+onLoad(() => {
+  getData()
+})
 
-// onLoad(() => {
-//   getData()
-// })
-
-router.go('/pages/goods/index')
+// router.go('/pages/goods/index')
 
 async function getData() {
   try {
