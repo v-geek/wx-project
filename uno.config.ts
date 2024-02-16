@@ -21,7 +21,8 @@ export default defineConfig({
   shortcuts: {
     'flex-c': 'flex justify-center items-center',
     'flex-between': 'flex justify-between items-center',
-    'flex-end': 'flex justify-end items-center'
+    'flex-end': 'flex justify-end items-center',
+    'flex-column': 'flex flex-col'
   },
   transformers: [transformerVariantGroup()]
 })

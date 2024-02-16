@@ -39,6 +39,13 @@
           "style": {
             "navigationBarTitleText": ""
           }
+        },
+        {
+          "path": "error",
+          "style": {
+            "navigationBarTitleText": "错误页面",
+            "navigationStyle": "custom"
+          }
         }
       ]
     },
