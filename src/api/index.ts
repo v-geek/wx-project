@@ -1,5 +1,5 @@
 import type { HttpRes, requestOptions } from './types'
-import config from '@/config/env'
+import config from '@/config'
 import { hideLoading, showLoading, showToast } from '@/utils/uni'
 import { isObject } from '@/utils/is'
 import useUserStore from '@/store/modules/user'

@@ -1,12 +1,18 @@
 <template>
   <view>
     <empty
+      v-if="errCode === 'networkError'"
       icon="/static/empty/internet-empty.png"
       text="网络连接失败"
       showButton
       buttonText="重新连接"
       @btnClick="onReconnect"
-      v-if="errCode === 'networkError'"
+    />
+
+    <empty
+      v-else-if="errCode === 'envError'"
+      icon="/static/empty/internet-empty.png"
+      text="网络连接失败"
     />
 
     <empty
@@ -24,6 +30,7 @@
 import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import empty from '@/components/empty.vue'
+import { initSystem } from '@/init'
 
 const errCode = ref('')
 const errMsg = ref('')
@@ -38,7 +45,7 @@ async function onReconnect() {
   uni.reLaunch({
     url: '/pages/index/index'
   })
-  // ShoproInit()
+  initSystem()
 }
 </script>
 

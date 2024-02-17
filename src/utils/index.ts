@@ -52,3 +52,8 @@ export function throttle<T = any>(fn: Function, delay: number = 500) {
     }
   }
 }
+
+export function isWxBrowser() {
+  const ua = navigator.userAgent.toLowerCase()
+  return ua.includes('micromessenger')
+}

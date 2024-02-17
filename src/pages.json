@@ -107,7 +107,8 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "mall商城",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "list": [

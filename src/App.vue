@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
+import { initSystem } from './init'
 
 onLaunch(() => {
   console.log('App Launch')
-
-  console.log('zzzzzzzzz')
-
-  console.log(ROUTES)
-  console.log(ROUTES_MAP)
-  console.log(TABBAR)
+  uni.hideTabBar()
+  initSystem()
 })
 
 onShow(() => {
