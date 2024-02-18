@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       uni(),
-      UnoCSS(),
+      // UnoCSS(),
       uniReadPages({
         pagesJsonDir: path.resolve(__dirname, './src/pages.json'),
         includes: ['path', 'aliasPath', 'meta']

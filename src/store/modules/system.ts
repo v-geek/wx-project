@@ -14,12 +14,12 @@ const useSystemStore = defineStore({
 
       // 检查网络
       if (!networkStatus) {
-        router.error('networkError')
+        return router.error('networkError')
       }
 
       // 检查配置
       if (!config.baseUrl) {
-        router.error('envError')
+        return router.error('envError')
       }
 
       // get-user-info

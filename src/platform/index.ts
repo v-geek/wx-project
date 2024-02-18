@@ -1,6 +1,10 @@
 import { isWxBrowser } from '@/utils'
 import wechat from './provider/wechat'
 import app from './provider/app'
+// #ifdef MP-WEIXIN
+import type wxService from './provider/wechat/miniProgram'
+type IWechat = typeof wxService
+// #endif
 
 let provider = ''
 
@@ -21,7 +25,7 @@ provider = 'app'
 // 加载当前平台前置行为
 const load = () => {
   if (provider === 'wechat') {
-    wechat.load()
+    ;(wechat as IWechat).load()
   }
 
   if (provider === 'app') {
@@ -41,7 +45,7 @@ const useProvider = (_provider = '') => {
  */
 const checkUpdate = (silence: boolean = false) => {
   // #ifdef MP-WEIXIN
-  useProvider().checkUpdate(silence)
+  ;(useProvider() as IWechat).checkUpdate(silence)
   // #endif
 
   // #ifdef APP-PLUS

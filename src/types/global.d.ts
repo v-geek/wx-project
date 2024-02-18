@@ -1,3 +1,4 @@
+declare module 'uview-ui'
 declare module 'qs-canvas'
 
 declare type Recordable<T = any> = Record<string, T>

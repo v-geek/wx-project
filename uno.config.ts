@@ -2,6 +2,8 @@ import { defineConfig, presetAttributify, presetUno, presetIcons } from 'unocss'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
 
+const remRE = /^-?[\.\d]+rem$/
+
 export default defineConfig({
   presets: [
     presetAttributify(),
@@ -24,5 +26,13 @@ export default defineConfig({
     'flex-end': 'flex justify-end items-center',
     'flex-column': 'flex flex-col'
   },
-  transformers: [transformerVariantGroup()]
+  transformers: [transformerVariantGroup()],
+  postprocess(util) {
+    // 自定义rem 转 rpx
+    util.entries.forEach(i => {
+      const value = i[1]
+      if (value && typeof value === 'string' && remRE.test(value))
+        i[1] = `${Number(value.slice(0, -3)) * 16 * 2}rpx`
+    })
+  }
 })
