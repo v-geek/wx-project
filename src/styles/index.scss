@@ -1,3 +1,374 @@
+@each $var in row column {
+  .#{$var} {
+    display: flex;
+    flex-direction: $var;
+  }
+}
+
+@each $var in 50 100 {
+  .wp-#{$var} {
+    width: $var * 1%;
+  }
+  .hp-#{$var} {
+    height: $var * 1%;
+  }
+  .tp-#{$var} {
+    top: $var * 1%;
+  }
+  .lp-#{$var} {
+    left: $var * 1%;
+  }
+}
+
+@for $var from 0 through 24 {
+  .text-#{$var} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    line-clamp: $var;
+    box-orient: vertical;
+  }
+
+  .grid-#{$var} {
+    display: grid;
+    grid-template-columns: repeat($var, #{$var + 'fr'});
+  }
+
+  .animate-delay-#{$var} {
+    animation-delay: calc($var / 10 * 1s);
+  }
+
+  .o-#{$var} {
+    opacity: $var * 0.1;
+  }
+}
+
+@for $var from 0 through 32 {
+  .br-#{$var} {
+    border-radius: $var * 1rpx;
+  }
+
+  .border-radius-#{$var} {
+    border-radius: $var * 1rpx;
+  }
+}
+
+@for $var from 400 through 750 {
+  .w-#{$var} {
+    width: $var * 1rpx;
+  }
+
+  .h-#{$var} {
+    height: $var * 1rpx;
+  }
+}
+
+@for $var from 0 through 400 {
+  .m-#{$var} {
+    margin: $var * 1rpx;
+  }
+
+  .ml-#{$var} {
+    margin-left: $var * 1rpx;
+  }
+
+  .mr-#{$var} {
+    margin-right: $var * 1rpx;
+  }
+
+  .mx-#{$var} {
+    margin-left: $var * 1rpx;
+    margin-right: $var * 1rpx;
+  }
+
+  .mt-#{$var} {
+    margin-top: $var * 1rpx;
+  }
+
+  .mt--#{$var} {
+    margin-top: $var * -1rpx;
+  }
+
+  .mb-#{$var} {
+    margin-bottom: $var * 1rpx;
+  }
+
+  .my-#{$var} {
+    margin-top: $var * 1rpx;
+    margin-bottom: $var * 1rpx;
+  }
+
+  .p-#{$var} {
+    padding: $var * 1rpx;
+  }
+
+  .pl-#{$var} {
+    padding-left: $var * 1rpx;
+  }
+
+  .pr-#{$var} {
+    padding-right: $var * 1rpx;
+  }
+
+  .px-#{$var} {
+    padding-left: $var * 1rpx;
+    padding-right: $var * 1rpx;
+  }
+
+  .pt-#{$var} {
+    padding-top: $var * 1rpx;
+  }
+
+  .pb-#{$var} {
+    padding-bottom: $var * 1rpx;
+  }
+
+  .py-#{$var} {
+    padding-top: $var * 1rpx;
+    padding-bottom: $var * 1rpx;
+  }
+
+  .w-#{$var} {
+    width: $var * 1rpx;
+  }
+
+  .h-#{$var} {
+    height: $var * 1rpx;
+  }
+
+  .lh-#{$var} {
+    line-height: $var * 1rpx;
+  }
+
+  .top-#{$var} {
+    top: $var * 1rpx;
+  }
+
+  .bottom-#{$var} {
+    bottom: $var * 1rpx;
+  }
+
+  .left-#{$var} {
+    left: $var * 1rpx;
+  }
+
+  .right-#{$var} {
+    right: $var * 1rpx;
+  }
+
+  .z-index-#{$var} {
+    z-index: $var;
+  }
+}
+
+@for $var from 0 through 100 {
+  .row-gap-#{$var} {
+    row-gap: $var * 1rpx;
+  }
+
+  .column-gap-#{$var} {
+    column-gap: $var * 1rpx;
+  }
+
+  .gap-#{$var} {
+    gap: $var * 1rpx;
+  }
+
+  .fs-#{$var} {
+    font-size: $var * 1rpx;
+  }
+}
+
+@each $var in center flex-end flex-start end space-between space-around {
+  .align-#{$var} {
+    align-items: $var;
+  }
+
+  .justify-#{$var} {
+    justify-content: $var;
+  }
+
+  .text-#{$var} {
+    text-align: $var;
+  }
+}
+
+@each $var in relative absolute fixed {
+  .#{$var} {
+    position: $var;
+  }
+}
+
+@each $var in wrap nowrap {
+  .#{$var} {
+    flex-wrap: $var;
+  }
+}
+
+@each $var in nowrap pre-wrap {
+  .ws-#{$var} {
+    white-space: $var;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+@each $var in block inline-flex inline-block {
+  .#{$var} {
+    display: $var;
+  }
+}
+
+@each $var in top middle bottom {
+  .va-#{$var} {
+    vertical-align: $var;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mh-100 {
+  min-height: 100vh;
+}
+
+.box {
+  box-sizing: border-box;
+}
+
+@each $var in 400 500 600 bold bolder {
+  .fw-#{$var} {
+    font-weight: $var;
+  }
+}
+
+@each $var in 0 3 4 6 8 10 12 14 16 24 {
+  .grid-#{$var} {
+    display: grid;
+    grid-template-columns: repeat($var, #{$var + 'fr'});
+  }
+}
+
+.transition {
+  transition: all 0.5s linear;
+}
+
+.cl-ef2e2e {
+  color: #ef2e2e;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+@each $var in 1 2 3 4 {
+  .text-#{$var} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    display: -webkit-block;
+    // 控制行数
+    -webkit-line-clamp: $var;
+    -webkit-box-orient: vertical;
+    line-clamp: $var;
+    box-orient: vertical;
+  }
+}
+
+@each $var in 1 2 3 4 {
+  .lineText-#{$var} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    // 控制行数
+    -webkit-line-clamp: $var;
+    -webkit-box-orient: vertical;
+    line-clamp: $var;
+    box-orient: vertical;
+  }
+}
+
+@each $var in ffffff 000000 {
+  .bg-#{$var} {
+    background: #{'#' + $var};
+  }
+
+  .cl-#{$var} {
+    color: #{'#' + $var};
+  }
+
+  .border-#{$var} {
+    border: 1rpx solid #{'#' + $var};
+  }
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.radius {
+  border-radius: 50%;
+}
+
+.x-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.y-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.br-rounded {
+  border-radius: 50%;
+}
+
+.is-loading {
+  animation: rotating 2s linear infinite;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .reset-button {
   padding: 0;
   margin: 0;

@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
-import UnoCSS from 'unocss/vite'
 import path, { resolve } from 'path'
 // @ts-ignore
 import uniReadPages from './src/router/utils/uniReadPages'
@@ -19,13 +18,13 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       uni(),
-      // UnoCSS(),
       uniReadPages({
         pagesJsonDir: path.resolve(__dirname, './src/pages.json'),
         includes: ['path', 'aliasPath', 'meta']
       })
     ],
     envPrefix: ['VITE_', 'NODE_ENV'],
+    // 内联 postcss 注册 tailwindcss
     server: {
       open: true,
       host: true,
