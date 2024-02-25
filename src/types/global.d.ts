@@ -1,4 +1,3 @@
-declare module 'uview-ui'
 declare module 'qs-canvas'
 
 declare type Recordable<T = any> = Record<string, T>
@@ -19,3 +18,5 @@ declare const ROUTES_MAP: { [key: string]: IRoute }
 declare const TABBAR: string[]
 
 declare type ErrCode = 'NetworkError' | 'EnvError' | 'TemplateError' | string
+declare type IProvider = 'wechat' | 'app'
+declare type INull = null | undefined | ''

@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-import { showToast } from '@/utils/uni'
+import { toast } from '@/utils/uni'
 import { getCurrentInstance, reactive } from 'vue'
 import useCanvas from './utils/useCanvas'
 
@@ -67,10 +67,10 @@ const onSavePoster = () => {
     filePath: poster.src,
     success: (res: any) => {
       onClosePoster()
-      showToast('保存成功')
+      toast('保存成功')
     },
     fail: (err: any) => {
-      showToast('保存失败')
+      toast('保存失败')
       console.log('图片保存失败:', err)
     }
   })

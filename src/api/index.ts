@@ -1,6 +1,6 @@
 import type { HttpRes, requestOptions } from './types'
 import config from '@/config'
-import { hideLoading, showLoading, showToast } from '@/utils/uni'
+import { hideLoading, showLoading, toast } from '@/utils/uni'
 import { isObject } from '@/utils/is'
 import useUserStore from '@/store/modules/user'
 
@@ -63,7 +63,7 @@ const request = <T = HttpRes>(options: requestOptions): Promise<T> => {
         }
 
         if (isObject(data) && data.code == 401) {
-          showToast(showError ? data.msg : get401Msg())
+          toast(showError ? data.msg : get401Msg())
           userStore.logout()
           reject(res)
         }
@@ -83,7 +83,7 @@ const request = <T = HttpRes>(options: requestOptions): Promise<T> => {
         }
         // #endif
 
-        showToast(errMsg)
+        toast(errMsg)
         hideLoading()
         reject(err)
       }
@@ -109,7 +109,7 @@ function handleError(code: number) {
 
   const errMsg = errMsgObj[code as keyof typeof errMsgObj]
 
-  showToast(errMsg)
+  toast(errMsg)
 
   if (code == 401) {
     userStore.logout()

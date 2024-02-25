@@ -1,3 +1,5 @@
+import { toast } from './uni'
+
 // 将一维数组拆分为指定长度二维数组
 export function groupArr<T = any>(array: T[], subLength: number): Array<T[]> {
   let index = 0
@@ -56,4 +58,29 @@ export function throttle<T = any>(fn: Function, delay: number = 500) {
 export function isWxBrowser() {
   const ua = navigator.userAgent.toLowerCase()
   return ua.includes('micromessenger')
+}
+
+export function copyText(text: string) {
+  // #ifndef H5
+  uni.setClipboardData({
+    data: text,
+    success: () => {
+      toast('复制成功!')
+    },
+    fail: () => {
+      toast('复制失败!')
+    }
+  })
+  // #endif
+
+  // #ifdef H5
+  const createInput = document.createElement('textarea')
+  createInput.value = text
+  document.body.appendChild(createInput)
+  createInput.select()
+  document.execCommand('Copy')
+  createInput.className = 'createInput'
+  createInput.style.display = 'none'
+  toast('复制成功')
+  // #endif
 }

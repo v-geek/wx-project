@@ -6,7 +6,7 @@ import type wxService from './provider/wechat/miniProgram'
 type IWechat = typeof wxService
 // #endif
 
-let provider = ''
+let provider: IProvider
 
 // #ifdef H5
 if (isWxBrowser()) {
@@ -33,10 +33,17 @@ const load = () => {
   }
 }
 
-const useProvider = (_provider = '') => {
-  if (_provider === '') _provider = provider
-  if (_provider === 'wechat') return wechat
-  if (_provider === 'app') return app
+const useProvider = (type?: IProvider | INull) => {
+  const obj = {
+    wechat,
+    app
+  }
+
+  if ([null, undefined, ''].includes(type)) {
+    return obj[provider]
+  }
+
+  return obj[type as IProvider]
 }
 
 /**
@@ -68,7 +75,8 @@ async function checkNetwork() {
 const platform = {
   load,
   checkUpdate,
-  checkNetwork
+  checkNetwork,
+  useProvider
 }
 
 export default platform

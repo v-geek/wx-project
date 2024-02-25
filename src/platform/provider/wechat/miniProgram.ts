@@ -1,10 +1,12 @@
-// 加载微信小程序
-function load() {
-  checkUpdate()
-}
+import { bindWechat } from '@/api/modules/pay'
 
 interface IUpdateManager extends UpdateManager {
   onCheckForUpdate(callback?: (res: { hasUpdate: boolean }) => void): void
+}
+
+// 加载微信小程序
+const load = () => {
+  checkUpdate()
 }
 
 // 小程序更新

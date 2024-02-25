@@ -1,10 +1,12 @@
-export const showToast = (
+export const toast = (
   title: string,
-  icon: UniApp.ShowToastOptions['icon'] = 'none'
+  icon: UniApp.ShowToastOptions['icon'] = 'none',
+  duration = 2000
 ) => {
   uni.showToast({
     title,
-    icon
+    icon,
+    duration
   })
 }
 
@@ -38,18 +40,18 @@ export const saveImg = (url: string) => {
           uni.saveImageToPhotosAlbum({
             filePath: res.path,
             success: () => {
-              uni.showToast({ title: '保存至相册成功', icon: 'success' })
+              toast('保存至相册成功', 'success')
               hideLoading()
             },
             fail: () => {
-              uni.showToast({ title: '保存图片失败', icon: 'error' })
+              toast('保存图片失败', 'error')
               hideLoading()
             }
           })
         },
         fail: () => {
           hideLoading()
-          uni.showToast({ title: '获取图片信息(临时地址)失败', icon: 'none' })
+          toast('获取图片信息(临时地址)失败')
         }
       })
     },
@@ -68,10 +70,10 @@ export const saveImg = (url: string) => {
             uni.openSetting({
               success: (res: { authSetting: AuthSetting }) => {
                 if (res.authSetting['scope.writePhotosAlbum']) {
-                  uni.showToast({ title: '授权成功' })
+                  toast('授权成功')
                 }
               },
-              fail: () => uni.showToast({ title: '授权失败' })
+              fail: () => toast('授权失败')
             })
           }
         }
