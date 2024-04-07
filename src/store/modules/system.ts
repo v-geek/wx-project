@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
-import platform from '@/platform'
 import router from '@/router'
 import config from '@/config'
+import { checkNetwork } from '@/utils/uni'
 
 const useSystemStore = defineStore({
   id: 'system',
@@ -10,7 +10,7 @@ const useSystemStore = defineStore({
   }),
   actions: {
     async init() {
-      const networkStatus = await platform.checkNetwork()
+      const networkStatus = await checkNetwork()
 
       // 检查网络
       if (!networkStatus) {

@@ -30,7 +30,7 @@
 import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import empty from '@/components/empty.vue'
-import { initSystem } from '@/init'
+import useSystemStore from '@/store/modules/system'
 
 const errCode = ref('')
 const errMsg = ref('')
@@ -45,7 +45,7 @@ async function onReconnect() {
   uni.reLaunch({
     url: '/pages/index/index'
   })
-  initSystem()
+  await useSystemStore().init()
 }
 </script>
 

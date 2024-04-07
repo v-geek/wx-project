@@ -1,11 +1,24 @@
 <script setup lang="ts">
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
-import { initSystem } from './init'
+import useSystemStore from './store/modules/system'
+import { checkUpdate } from './utils/checkUpdate'
 
-onLaunch(() => {
+onLaunch(async () => {
   console.log('App Launch')
+
   uni.hideTabBar()
-  initSystem()
+
+  await useSystemStore().init()
+
+  checkUpdate()
+
+  // #ifdef H5
+  if (process.env.NODE_ENV === 'development') {
+    import('vconsole').then(vconsole => {
+      new vconsole.default()
+    })
+  }
+  // #endif
 })
 
 onShow(() => {

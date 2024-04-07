@@ -104,3 +104,15 @@ export const uniapp = <T = any, P = any>(
 
     uniFn({ ...defaultOptions, ...options })
   })
+
+interface NetworkType {
+  networkType: 'wifi' | '2g' | '3g' | '4g' | '5g' | 'ethernet' | 'unknown' | 'none'
+}
+
+export function checkNetwork() {
+  const networkStatus = uni.getNetworkType() as unknown as NetworkType
+  if (networkStatus.networkType == 'none') {
+    return Promise.resolve(false)
+  }
+  return Promise.resolve(true)
+}

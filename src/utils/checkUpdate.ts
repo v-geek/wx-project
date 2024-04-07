@@ -1,16 +1,11 @@
-import { bindWechat } from '@/api/modules/pay'
-
 interface IUpdateManager extends UpdateManager {
   onCheckForUpdate(callback?: (res: { hasUpdate: boolean }) => void): void
 }
 
-// 加载微信小程序
-const load = () => {
-  checkUpdate()
-}
-
-// 小程序更新
-async function checkUpdate(silence = true) {
+/**
+ * @description: 检查小程序更新
+ */
+const checkWxUpdate = async (silence = true) => {
   if (uni.canIUse('getUpdateManager')) {
     const updateManager = uni.getUpdateManager() as IUpdateManager
 
@@ -54,7 +49,16 @@ async function checkUpdate(silence = true) {
   }
 }
 
-export default {
-  load,
-  checkUpdate
+/**
+ * 检查更新 (只检查小程序和App)  eg: 点击按钮触发动作
+ * @param {Boolean} silence - 静默检查
+ */
+export const checkUpdate = (silence: boolean = false) => {
+  // #ifdef MP-WEIXIN
+  checkWxUpdate(silence)
+  // #endif
+
+  // #ifdef APP-PLUS
+  // 热更新 - to-do
+  // #endif
 }
