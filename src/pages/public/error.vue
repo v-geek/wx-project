@@ -2,7 +2,7 @@
   <view>
     <empty
       v-if="errCode === 'networkError'"
-      icon="/static/empty/internet-empty.png"
+      icon="/static/internet-empty.png"
       text="网络连接失败"
       showButton
       buttonText="重新连接"
@@ -11,13 +11,13 @@
 
     <empty
       v-else-if="errCode === 'envError'"
-      icon="/static/empty/internet-empty.png"
+      icon="/static/internet-empty.png"
       text="网络连接失败"
     />
 
     <empty
       v-else
-      icon="/static/empty/internet-empty.png"
+      icon="/static/internet-empty.png"
       :text="errMsg"
       showButton
       buttonText="重新加载"
