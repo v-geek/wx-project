@@ -12,7 +12,6 @@ function go(path: IPath, params = {}, options = { redirect: false }) {
     if (path.startsWith('http')) {
       // #ifdef H5
       return (window.location.href = path)
-
       // #endif
 
       // #ifndef H5
@@ -43,7 +42,7 @@ function go(path: IPath, params = {}, options = { redirect: false }) {
   const nextRoute = ROUTES_MAP[page]
 
   // 未找到指定跳转页面
-  // mark: 跳转404页
+  // to-do: 跳转404页
   if (!nextRoute) {
     console.log(`%c跳转路径参数错误<${page || 'EMPTY'}>`, 'color:red;background:yellow')
     return

@@ -7,7 +7,7 @@ class transformPages {
   // 需要提取的字段
   private includes: IParams['includes']
   private pagesJson: Recordable
-  public routes: IRoute[]
+  public routes: Route[]
   public tabbar: string[]
   public routesMap: Recordable
 
@@ -23,11 +23,11 @@ class transformPages {
   /**
    * 生成主包的routes
    */
-  getPagesRoutes(pages = this.pagesJson.pages, rootPath = null): IRoute[] {
+  getPagesRoutes(pages = this.pagesJson.pages, rootPath = null): Route[] {
     const routes = pages.map((page: Recordable, pageIndex: number) => {
-      const route = {} as IRoute
+      const route = {} as Route
 
-      this.includes.forEach((key: keyof IRoute) => {
+      this.includes.forEach((key: keyof Route) => {
         let value = page[key]
 
         // 添加前缀
@@ -56,7 +56,7 @@ class transformPages {
       return []
     }
 
-    const routes: IRoute[] = []
+    const routes: Route[] = []
 
     this.pagesJson.subPackages.forEach((subPagesObj: Recordable) => {
       const subPages = subPagesObj.pages

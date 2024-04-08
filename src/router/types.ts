@@ -1,5 +1,5 @@
 export interface IParams {
-  includes: (keyof IRoute)[]
+  includes: (keyof Route)[]
   pagesJsonDir: string
 }
 
