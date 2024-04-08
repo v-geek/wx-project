@@ -14,7 +14,7 @@
       </swiper-item>
     </swiper>
 
-    <template v-if="showNavigation && urlList.length > 1">
+    <template v-if="showNavigation && urlList.length">
       <view class="arrow" @tap="slidePrev" :style="{ left: '30rpx' }">
         <uni-icons type="left" size="14" color="#ffffff" />
       </view>
