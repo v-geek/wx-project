@@ -82,7 +82,6 @@ const handleAction = (path: string) => {
 
   switch (action[1]) {
     case 'showShareModal':
-      // showShareModal()
       break
   }
 }
