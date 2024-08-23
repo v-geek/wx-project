@@ -1,29 +1,21 @@
 import { defineStore } from 'pinia'
 import router from '@/router'
-import config from '@/config'
-import { checkNetwork } from '@/utils/uni'
+import type { NetworkType, SystemState } from '../types'
 
 const useSystemStore = defineStore({
   id: 'system',
-  state: () => ({
-    test: 'xxxxxxxx'
+  state: (): SystemState => ({
+    safeAreaHeight: 0
   }),
   actions: {
-    async init() {
-      const networkStatus = await checkNetwork()
-
-      // 检查网络
-      if (!networkStatus) {
+    checkNetwork() {
+      const networkStatus = uni.getNetworkType() as unknown as NetworkType
+      if (networkStatus.networkType == 'none') {
         return router.error('networkError')
       }
-
-      // 检查配置
-      if (!config.baseUrl) {
-        return router.error('envError')
-      }
-
-      // get-user-info
-      // to-do
+    },
+    setState(...args: ObjToKeyValArray<SystemState>) {
+      this.$patch({ [args[0]]: args[1] })
     }
   },
   persist: {

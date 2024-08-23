@@ -1,0 +1,30 @@
+/* #ifdef APP-IOS */
+.safearea {
+  padding-bottom: constant(safe-area-inset-bottom); /* 兼容 iOS < 11.2 */
+  padding-bottom: env(safe-area-inset-bottom); /* 兼容 iOS >= 11.2 */
+}
+
+// input 框聚焦时出现 outline 或者阴影
+input:focus {
+  outline: none;
+}
+input {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+// iOS下, input 框输入的内容偏上
+// 给 input 去除 line-height 属性, 然后添加下面的样式
+input::-webkit-input-placeholder {
+  line-height: normal;
+}
+
+// 阻止图片在 微信 里被点击放大
+img {
+  pointer-events: none;
+}
+/* #endif */
+
+/* #ifdef APP-ANDROID */
+// to-do
+/* #endif */

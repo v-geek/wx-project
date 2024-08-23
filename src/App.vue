@@ -3,12 +3,18 @@ import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 import useSystemStore from './store/modules/system'
 import { checkUpdate } from './utils/checkUpdate'
 
-onLaunch(async () => {
+onLaunch(() => {
   console.log('App Launch')
 
-  uni.hideTabBar()
+  const systemStore = useSystemStore()
 
-  await useSystemStore().init()
+  systemStore.checkNetwork()
+
+  const { screenHeight, safeArea } = uni.getSystemInfoSync()
+  const safeAreaHeight = screenHeight! - safeArea!.bottom!
+  systemStore.setState('safeAreaHeight', safeAreaHeight)
+
+  uni.hideTabBar()
 
   checkUpdate()
 

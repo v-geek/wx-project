@@ -44,6 +44,13 @@
       "ios": {},
       /* SDK配置 */
       "sdkConfigs": {}
+    },
+    // 安全区域配置，仅iOS平台生效
+    "safearea": {
+      "background": "#RRGGBB", // 安全区域的背景颜色
+      "bottom": {
+        "offset": "none" // "none"表示不空出安全区域, "auto"自动计算空出安全区域
+      }
     }
   },
   /* 快应用特有相关 */

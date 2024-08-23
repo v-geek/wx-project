@@ -105,14 +105,13 @@ export const uniapp = <T = any, P = any>(
     uniFn({ ...defaultOptions, ...options })
   })
 
-interface NetworkType {
-  networkType: 'wifi' | '2g' | '3g' | '4g' | '5g' | 'ethernet' | 'unknown' | 'none'
-}
-
-export function checkNetwork() {
-  const networkStatus = uni.getNetworkType() as unknown as NetworkType
-  if (networkStatus.networkType == 'none') {
-    return Promise.resolve(false)
-  }
-  return Promise.resolve(true)
+export const setAndroidSafeAreaBgColor = (colorStr: string) => {
+  // #ifdef APP-PLUS
+  let color, ac, c2int, win
+  color = plus.android.newObject('android.graphics.Color')
+  ac = plus.android.runtimeMainActivity()
+  c2int = plus.android.invoke(color, 'parseColor', colorStr)
+  win = plus.android.invoke(ac, 'getWindow')
+  plus.android.invoke(win, 'setNavigationBarColor', c2int)
+  // #endif
 }
